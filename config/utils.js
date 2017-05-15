@@ -38,7 +38,7 @@ const packageRollup = (options) => {
       format: options.format,
       banner: banner,
       moduleName: classify(pack.name),
-      footer: `if (window.${moduleId}) window.sweetAlert = window.swal = window.${moduleId};`
+      footer: `if (typeof window !== 'undefined' && window.${moduleId}) window.sweetAlert = window.swal = window.${moduleId};`
     }).code.replace(/sweetAlert\.version = '(.*)'/, "sweetAlert.version = '" + pack.version + "'")
 
     if (options.minify) {
